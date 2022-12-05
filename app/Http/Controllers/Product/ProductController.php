@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //
-        $products = Product::where('company_id', $request->company_id)->get();
+        $products = Product::where('company_id', $request->company_id)->orderBy('id')->get();
 
         return response()->json([
             'products' => $products
@@ -99,7 +99,15 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    try{
+
         $product = Product::find($id);
         $product->delete();
+        return response()->json([
+            'success' => 'success'
+        ]);
+    }catch(Exception $e){
+        return $e->getMessage();
+    }
     }
 }
