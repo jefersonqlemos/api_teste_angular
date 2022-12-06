@@ -8,6 +8,7 @@ use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Product\ProductForSaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::resource('cart', CartController::class);
 Route::post('/client/register', [ClientController::class, 'register']);
 Route::post('/client/login', [ClientController::class, 'login']);
 Route::post('/client/logout', [ClientController::class, 'logout']);
+Route::get('/product-for-sale/list', [ProductForSaleController::class, 'index']);
 Route::resource('company', CompanyController::class);
 Route::resource('order', OrderController::class);
 Route::resource('product', ProductController::class);
